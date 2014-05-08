@@ -9,7 +9,21 @@
 </head>
 <body>
 <f:view>
-
+	<h:form>
+		<span>Note:</span>
+		<h:inputText value="#{noteController.note.text}" />
+		<br/><br/>
+		<h:commandButton value="Adicionar" actionListener="#{noteController.addAction}" />
+	</h:form>
+	
+	<h:dataTable var="note" value="#{noteController.notes}" border="1" width="100%">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Text"/>
+			</f:facet>
+			<h:outputText value="#{note.text}" />
+		</h:column>
+	</h:dataTable>
 </f:view>
 </body>
 </html>
