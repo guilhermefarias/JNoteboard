@@ -1,0 +1,79 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.clearfix {
+	clear: both;
+}
+
+body {
+	font-family: helvetica, arial, sans-serif;
+	background: #ac8156 url(../images/bg.jpg);
+}
+
+.icon {
+	background-repeat: no-repeat;
+	background-image: url(../images/sprite.png);
+}
+
+.add-box {
+	top: 10px;
+	right: 10px;
+	width: 500px;
+	z-index: 200;
+	position: fixed;
+	max-height: 705px;
+	background-color: #ffa;
+	border: 1px solid #ccc;	
+	box-shadow: 0 0 10px 0.1px #000;
+}
+
+.add-box textarea {
+	border: none;
+	width: 480px;
+	margin: 10px;
+	height: 150px;
+	outline: none;
+	font-size: 14px;
+	resize: vertical;
+	background: none;
+	max-height: 650px;
+	font-family: Helvetica, arial, sans-serif;
+}
+
+.add-box .button {
+	border: none;
+	cursor: pointer;
+	font-size: 13px;
+	background: #cc5;
+	padding: 5px 10px;
+	margin: 0 0 5px 10px;
+	border-radius: 3px;
+}
+
+.add-box .button:hover {
+	box-shadow: inset 0 0 5px 0.1px rgba(0,0,0,0.5);
+}
+
+.add-box .button:active {
+	box-shadow: inset 0 0 5px 1px #000;
+}
+
+table {
+	width: 400px;
+	margin: 20px;
+}
+
+table tr {
+	margin: 10px;
+	background-color: #FFA;
+	box-shadow: 0 0 10px 0.1px rgba(0,0,0,0.3);
+	-o-box-shadow: 0 0 10px 0.1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 0 10px 0.1px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 0 10px 0.1px rgba(0,0,0,0.3);
+}
+
+table td {
+	padding: 10px;
+}
