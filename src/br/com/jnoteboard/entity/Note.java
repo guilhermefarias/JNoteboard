@@ -1,3 +1,4 @@
+package br.com.jnoteboard.entity;
 
 public class Note {
 	private String text;

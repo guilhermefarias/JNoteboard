@@ -1,5 +1,8 @@
+package br.com.jnoteboard.controller;
+
 import java.util.ArrayList;
 import javax.faces.event.ActionEvent;
+import br.com.jnoteboard.entity.Note;
 
 public class NoteController {
 	private Note note;
