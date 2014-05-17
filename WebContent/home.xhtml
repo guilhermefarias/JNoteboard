@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+	<link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>JNoteboard</title>
+</head>
+<body>
+<f:view>
+	<h:form styleClass="add-box">
+		<h:inputTextarea value="#{noteController.note.text}" />
+		<h:commandButton value="Adicionar" actionListener="#{noteController.addAction}" styleClass="button" />
+	</h:form>
+
+	<ui:repeat var="note" value="#{noteController.notes}" varStatus="status">
+		<div class='note'>
+			<div class='header'>
+				<div class='bt-close icon'></div>
+			</div>
+			<span>#{note.text}</span>
+		</div>
+	</ui:repeat>
+</f:view>
+</body>
+</html>
