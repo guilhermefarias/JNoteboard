@@ -8,7 +8,13 @@
 
 	<managed-bean>
 		<managed-bean-name>noteController</managed-bean-name>
-		<managed-bean-class>NoteController</managed-bean-class>
+		<managed-bean-class>br.com.jnoteboard.controller.NoteController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>userController</managed-bean-name>
+		<managed-bean-class>br.com.jnoteboard.controller.UserController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
