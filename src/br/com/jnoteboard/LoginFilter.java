@@ -27,12 +27,12 @@ public class LoginFilter implements Filter {
 		if (userController == null || !userController.isLoggedIn()) {
 			String contextPath = httpRequest.getContextPath();
 			String requesstURI = httpRequest.getRequestURI();
-			
-			if(requesstURI.equals("/JNoteboard/faces/login.xhtml")){
-				chain.doFilter(request, response);
-			} else {
+
+			if(requesstURI.equals("/JNoteboard/faces/home.xhtml")){
 				HttpServletResponse httpResponse = (HttpServletResponse) response;
 				httpResponse.sendRedirect(contextPath + "/faces/login.xhtml");
+			} else {
+				chain.doFilter(request, response);
 			}
 		} else {
 			chain.doFilter(request, response);

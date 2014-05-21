@@ -1,0 +1,178 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+@font-face {
+	font-family:"Bebas Neue";
+	src: url("../BebasNeue.otf");
+}
+
+body {
+	font-weight: 100;
+	background-size: cover;
+	background-color: #cd9862;
+	background-attachment: fixed;
+	background-position: center center;
+	background-image: url(../images/login-bg.jpg);
+	font-family: 'Bebas Neue', helvetica, arial, sans-serif;
+}
+
+h3 {
+	color: #fff;
+	font-size: 30px;
+	font-weight: 100;
+	text-shadow: 0 0 5px #000;
+}
+
+.icon {
+	background-repeat: no-repeat;
+	background-image: url(../images/login-sprite.png);
+}
+
+.wrapper {
+	max-width: 85%;
+	margin: 0 auto;
+	min-width: 1000px;
+}
+
+.logo {
+	width: 555px;
+	height: 120px;
+	display: block;
+	overflow: hidden;
+	text-indent: 1000px;
+	margin: 80px 0 20px 0;
+	background-position: 0 0;
+}
+
+.description {
+	width: 58%;
+	color: #fff;
+	float: left;
+	font-size: 30px;
+	font-weight: 100;
+	margin-top: 30px;
+	text-shadow: 2px 2px 5px #000;
+}
+
+.box {
+	width: 380px;
+	float: right;
+	padding: 20px;
+}
+
+.box.login {
+	background-position: -135px -117px;
+}
+
+.box.join {
+	background-position: -135px -320px;
+}
+
+.box ul {
+	list-style: none;
+}
+
+.box li {
+	padding: 5px;
+	width: 365px;
+	height: 24px;
+	margin-top: 10px;
+	background-color: #fff;
+}
+
+.box label {
+	color: #222;
+	width: 48px;
+	font-size: 22px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.box input {
+	width: 315px;
+	float: right;
+	outline: none;
+	border: none;
+	font-size: 18px;
+	font-family: helvetica, arial, sans-serif;
+}
+
+.box .button {
+	color: #eee;
+	float: right;
+	border: none;
+	cursor: pointer;
+	margin-top: 8px;
+	font-size: 26px;
+	background: none;
+	text-shadow: 0px 0px 5px #000;
+}
+
+.box .link,
+.box span {
+	color: #fff;
+	float: left;
+	font-size: 20px;
+	margin-top: 15px;
+	margin-right: 10px;
+	text-decoration: none;
+}
+
+.box .button {
+	width: auto;
+	font-family: 'Bebas Neue';
+}
+
+.wrapper .alert { 
+	color: #ccc;
+	clear: both;
+	width: 700px;
+	margin: 0 auto;
+	font-size: 26px;
+	font-weight: 100;
+	border-radius: 5px;
+	text-align: center;
+	padding: 5px 20px 5px 20px;
+	background-color: rgba(255, 0, 0, 0.5);
+}
+
+.apps {
+	bottom: 0;
+	left: 50%;
+	position: fixed;
+	margin-left: -100px
+}
+
+.apps a {
+	width: 64px;
+	height: 64px;
+	opacity: 0.3;
+	display: inline-block;
+}
+
+.apps a:hover {
+	opacity: 1;
+}
+
+.apps .android {
+	background-position: -37px -294px;
+}
+
+.apps .firefox {
+	background-position: -36px -129px;
+}
+
+.apps .chrome {
+	background-position: -34px -208px;
+}
+
+.old {
+	color: #fff;
+	width: 555px;
+	margin: 0 auto;
+	font-size: 35px;
+	text-align: center;
+	font-family: helvetica, arial, sans-serif;
+}

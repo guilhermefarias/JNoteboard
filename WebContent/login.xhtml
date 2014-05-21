@@ -5,13 +5,42 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <head>
-	<link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./resources/css/login.css" rel="stylesheet" type="text/css" />
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title>JNoteboard</title>
 </head>
 <body>
 <f:view>
-	<p>Login Page</p>
+	<div class="wrapper">
+		<h1 class="logo icon">Gnoteboard</h1>
+		<h2 class="description">Here you can save your notes and reminders in clouds, this is very quick and easy. By registering for the service, you will have your virtual wall, where you can make notes and organize like a sticky notes board.
+</h2>
+
+		<div class="box login icon">
+			<h3>Login</h3>
+			<form id="loginform" method="post" action="javascript:;">  
+				<ul>
+					<li>
+						<label>Email</label>
+						<h:inputText value="#{userController.email}" />
+					</li>
+					<li>
+						<label>Pass</label>
+						<h:inputSecret value="#{userController.password}" />
+					</li>
+				</ul>
+
+				<a href="join" class="link">Join</a>
+				<h:commandButton value="Login" actionListener="#{userController.doLogin}" styleClass="button" styleClass="button"/>
+			</form>
+		</div>
+
+		<div class="apps">
+			<a href="https://play.google.com/store/apps/details?id=br.web.gnoteboard" title="Download the app on your Android" class="android icon"></a>
+			<a href="https://marketplace.firefox.com/app/gnoteboard/" title="Download the app on your FirefoxOS" class="firefox icon"></a>
+			<a href="https://chrome.google.com/webstore/detail/gnoteboard/fplbifbddpcmffmmgabkgchcjleginah" title="Install the app on your Google Chrome" class="chrome icon"></a>
+		</div>
+	</div>
 </f:view>
 </body>
 </html>
