@@ -13,12 +13,10 @@
 <f:view>
 	<div class="wrapper">
 		<h1 class="logo icon">Gnoteboard</h1>
-		<h2 class="description">Here you can save your notes and reminders in clouds, this is very quick and easy. By registering for the service, you will have your virtual wall, where you can make notes and organize like a sticky notes board.
-</h2>
-
+		<h2 class="description">Here you can save your notes and reminders in clouds, this is very quick and easy. By registering for the service, you will have your virtual wall, where you can make notes and organize like a sticky notes board.</h2>
 		<div class="box login icon">
 			<h3>Login</h3>
-			<form id="loginform" method="post" action="javascript:;">  
+			<h:form>  
 				<ul>
 					<li>
 						<label>Email</label>
@@ -31,8 +29,8 @@
 				</ul>
 
 				<a href="join" class="link">Join</a>
-				<h:commandButton value="Login" actionListener="#{userController.doLogin}" styleClass="button" styleClass="button"/>
-			</form>
+				<h:commandButton value="Adicionar" actionListener="#{userController.doLogin}" styleClass="button" />
+			</h:form>
 		</div>
 
 		<div class="apps">
