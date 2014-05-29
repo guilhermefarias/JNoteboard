@@ -14,8 +14,8 @@
 	<div class="wrapper">
 		<h1 class="logo icon">Gnoteboard</h1>
 		<h2 class="description">Here you can save your notes and reminders in clouds, this is very quick and easy. By registering for the service, you will have your virtual wall, where you can make notes and organize like a sticky notes board.</h2>
-		<div class="box login icon">
-			<h3>Login</h3>
+		<div class="box join icon">
+			<h3>Join</h3>
 			<h:form>  
 				<ul>
 					<li>
@@ -26,10 +26,18 @@
 						<label>Pass</label>
 						<h:inputSecret value="#{userController.password}" />
 					</li>
+					<li>
+						<label>Name</label>
+						<h:inputText value="#{userController.name}" />
+					</li>
+					<li>
+						<label>Email</label>
+						<h:inputText value="#{userController.email}" />
+					</li>
 				</ul>
 
-				<h:link value="Join" outcome="join" styleClass="link"/>
-				<h:commandButton value="Log in" actionListener="#{userController.doLogin}" styleClass="button" />
+				<h:link value="Back" outcome="login" styleClass="link"/>
+				<h:commandButton value="Sign up" actionListener="#{userController.join}" styleClass="button" />
 			</h:form>
 		</div>
 
