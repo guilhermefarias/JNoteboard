@@ -6,7 +6,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import br.com.jnoteboard.entity.User;
 import br.com.jnoteboard.model.ModelClass;
+import br.com.jnoteboard.model.UserModel;
 
 public class UserController {
 	private String name;
@@ -53,13 +55,18 @@ public class UserController {
 
 	public void doLogin() throws IOException{
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		ModelClass modelClass = ModelClass.instance();
+		UserModel userModel = UserModel.instance();
+		User user = new User();
+		user.setName(this.name);
+		user.setLogin(this.login);
+		user.setEmail(this.email);
+		user.setPassword(this.password);
 
 		if (!this.login.isEmpty() && !this.password.isEmpty()){
 			this.loggedIn = true;
 
 			try {
-				modelClass.add(this.login);
+				userModel.insert(user);
 			} catch (Exception e) {}
 
 			HttpSession httpSession = (HttpSession) externalContext.getSession(true);
@@ -67,6 +74,30 @@ public class UserController {
 			externalContext.redirect("/JNoteboard/faces/home.xhtml");
 		} else {
 			externalContext.redirect("/JNoteboard/faces/login.xhtml");
+		}
+	}
+
+	public void join() throws IOException{
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		UserModel userModel = UserModel.instance();
+		User user = new User();
+		user.setName(this.name);
+		user.setLogin(this.login);
+		user.setEmail(this.email);
+		user.setPassword(this.password);
+
+		if (!this.login.isEmpty() && !this.password.isEmpty()){
+			this.loggedIn = true;
+
+			try {
+				userModel.insert(user);
+			} catch (Exception e) {}
+
+			HttpSession httpSession = (HttpSession) externalContext.getSession(true);
+			httpSession.setAttribute("userController", this);
+			externalContext.redirect("/JNoteboard/faces/home.xhtml");
+		} else {
+			externalContext.redirect("/JNoteboard/faces/join.xhtml");
 		}
 	}
 
