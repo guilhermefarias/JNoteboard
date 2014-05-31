@@ -16,14 +16,20 @@
 		<h:commandButton value="Adicionar" actionListener="#{noteController.addAction}" styleClass="button" />
 	</h:form>
 
-	<ui:repeat var="note" value="#{noteController.notes}" varStatus="status">
-		<div class='note'>
-			<div class='header'>
-				<div class='bt-close icon'></div>
+	<h:form>
+		<h:commandButton actionListener="#{userController.doLogout}" title="Logout" styleClass="logout icon" />
+	</h:form>
+
+	<div id="wrapper">
+		<ui:repeat var="note" value="#{noteController.notes}" varStatus="status">
+			<div class='note'>
+				<div class='header'>
+					<div class='bt-close icon'></div>
+				</div>
+				<span>#{note.text}</span>
 			</div>
-			<span>#{note.text}</span>
-		</div>
-	</ui:repeat>
+		</ui:repeat>
+	</div>
 </f:view>
 </body>
 </html>
