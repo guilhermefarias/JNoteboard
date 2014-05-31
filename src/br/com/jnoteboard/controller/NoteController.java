@@ -3,6 +3,7 @@ package br.com.jnoteboard.controller;
 import java.util.ArrayList;
 import javax.faces.event.ActionEvent;
 import br.com.jnoteboard.entity.Note;
+import br.com.jnoteboard.model.NoteModel;
 
 public class NoteController {
 	private Note note;
@@ -13,7 +14,17 @@ public class NoteController {
 	}
 
 	public ArrayList<Note> getNotes(){
+		ArrayList<Note> notes = new ArrayList<Note>();
+		NoteModel noteModel = NoteModel.instance();
+
+		try {
+			notes = noteModel.list(5);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return notes;
+		
 	}
 
 	public void setNote(Note note){
@@ -30,7 +41,10 @@ public class NoteController {
 	}
 
 	public void addAction(ActionEvent event){
-		this.getNotes().add(this.getNote());
-		this.setNote(new Note());
+		NoteModel noteModel = NoteModel.instance();
+
+		try {
+			noteModel.insert(this.note);
+		} catch (Exception e) {}
 	}
 }

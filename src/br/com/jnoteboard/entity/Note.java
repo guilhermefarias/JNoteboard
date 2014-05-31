@@ -1,6 +1,7 @@
 package br.com.jnoteboard.entity;
 
 public class Note {
+	private int id;
 	private String text;
 	private int userId;
 
@@ -21,5 +22,12 @@ public class Note {
 	}
 
 	public Note(){
+	}
+
+	public int getId(){
+		return this.id;
+	}
+	public void setId(int id){
+		this.id = id;
 	}
 }
