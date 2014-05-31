@@ -54,24 +54,28 @@ public class UserController {
 	}
 
 	public void doLogin() throws IOException{
+		boolean userExist = false;
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		UserModel userModel = UserModel.instance();
 		User user = new User();
-		user.setName(this.name);
 		user.setLogin(this.login);
-		user.setEmail(this.email);
 		user.setPassword(this.password);
 
 		if (!this.login.isEmpty() && !this.password.isEmpty()){
-			this.loggedIn = true;
-
 			try {
-				userModel.insert(user);
+				userExist = userModel.exist(user);
+				System.out.print(userExist);
+				this.loggedIn = true;
 			} catch (Exception e) {}
 
-			HttpSession httpSession = (HttpSession) externalContext.getSession(true);
-			httpSession.setAttribute("userController", this);
-			externalContext.redirect("/JNoteboard/faces/home.xhtml");
+			if(userExist){
+				HttpSession httpSession = (HttpSession) externalContext.getSession(true);
+				httpSession.setAttribute("userController", this);
+				externalContext.redirect("/JNoteboard/faces/home.xhtml");
+			} else {
+				externalContext.redirect("/JNoteboard/faces/login.xhtml");
+			}
+			
 		} else {
 			externalContext.redirect("/JNoteboard/faces/login.xhtml");
 		}
@@ -86,16 +90,16 @@ public class UserController {
 		user.setEmail(this.email);
 		user.setPassword(this.password);
 
-		if (!this.login.isEmpty() && !this.password.isEmpty()){
-			this.loggedIn = true;
-
+		if (!this.name.isEmpty() && !this.login.isEmpty() && !this.email.isEmpty() && !this.password.isEmpty()){
 			try {
 				userModel.insert(user);
-			} catch (Exception e) {}
-
-			HttpSession httpSession = (HttpSession) externalContext.getSession(true);
-			httpSession.setAttribute("userController", this);
-			externalContext.redirect("/JNoteboard/faces/home.xhtml");
+				this.loggedIn = true;
+				HttpSession httpSession = (HttpSession) externalContext.getSession(true);
+				httpSession.setAttribute("userController", this);
+				externalContext.redirect("/JNoteboard/faces/home.xhtml");
+			} catch (Exception e) {
+				externalContext.redirect("/JNoteboard/faces/join.xhtml");
+			}
 		} else {
 			externalContext.redirect("/JNoteboard/faces/join.xhtml");
 		}

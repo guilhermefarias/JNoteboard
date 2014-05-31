@@ -52,4 +52,35 @@ public class UserModel {
 		}
 	}
 
+	public boolean exist(User user) throws Exception {
+		boolean existUser = false;
+		Connection con = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/jnoteboard","root","");
+			String selectSQL = "SELECT * FROM `user` WHERE login = ? AND password = ?";
+			st = (PreparedStatement) con.prepareStatement(selectSQL);
+			st.setString(1, user.getLogin());
+			st.setString(2, user.getPassword());
+			rs = st.executeQuery();
+			existUser = rs.next();
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+			} catch (Exception e){}
+			try {
+				con.close();
+			} catch (Exception e){}
+		}
+
+		if(existUser){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
