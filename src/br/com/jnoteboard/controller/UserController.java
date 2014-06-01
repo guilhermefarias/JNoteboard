@@ -1,13 +1,10 @@
 package br.com.jnoteboard.controller;
 
 import java.io.IOException;
-
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
 import br.com.jnoteboard.entity.User;
-import br.com.jnoteboard.model.ModelClass;
 import br.com.jnoteboard.model.UserModel;
 
 public class UserController {
