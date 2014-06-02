@@ -12,6 +12,7 @@
 <body>
 <f:view>
 	<h:form styleClass="add-box">
+		<input type="hidden" name="id" value="#{userController.id}" />
 		<h:inputTextarea value="#{noteController.note.text}" />
 		<h:commandButton value="Adicionar" actionListener="#{noteController.addAction}" styleClass="button" />
 	</h:form>

@@ -8,11 +8,20 @@ import br.com.jnoteboard.entity.User;
 import br.com.jnoteboard.model.UserModel;
 
 public class UserController {
+	private int id;
 	private String name;
 	private String login;
 	private String email;
 	private String password;
 	private boolean loggedIn;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -51,7 +60,7 @@ public class UserController {
 	}
 
 	public void doLogin() throws IOException{
-		boolean userExist = false;
+		int userId = 0;
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		UserModel userModel = UserModel.instance();
 		User user = new User();
@@ -60,12 +69,12 @@ public class UserController {
 
 		if (!this.login.isEmpty() && !this.password.isEmpty()){
 			try {
-				userExist = userModel.exist(user);
-				System.out.print(userExist);
-				this.loggedIn = true;
+				userId = userModel.exist(user);
 			} catch (Exception e) {}
 
-			if(userExist){
+			if(userId != 0){
+				this.loggedIn = true;
+				this.id = userId;
 				HttpSession httpSession = (HttpSession) externalContext.getSession(true);
 				httpSession.setAttribute("userController", this);
 				externalContext.redirect("/JNoteboard/faces/home.xhtml");
@@ -90,6 +99,7 @@ public class UserController {
 		if (!this.name.isEmpty() && !this.login.isEmpty() && !this.email.isEmpty() && !this.password.isEmpty()){
 			try {
 				userModel.insert(user);
+				this.id = userModel.exist(user);
 				this.loggedIn = true;
 				HttpSession httpSession = (HttpSession) externalContext.getSession(true);
 				httpSession.setAttribute("userController", this);

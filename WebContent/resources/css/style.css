@@ -107,14 +107,16 @@ body {
 }
 
 .bt-close {
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
 	opacity: 0.3;
 	float: right;
 	display: none;
 	cursor: pointer;
-	margin: 7px 7px 0 0;
-	background-position: -83px -8px;
+	border: none;
+	margin: 8px 2px 0px 0px;
+	background-color: transparent;
+	background-position: -85px -9px;
 }
 
 .bt-close:hover {

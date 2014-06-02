@@ -3,8 +3,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
 import br.com.jnoteboard.entity.User;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -52,8 +50,8 @@ public class UserModel {
 		}
 	}
 
-	public boolean exist(User user) throws Exception {
-		boolean existUser = false;
+	public int exist(User user) throws Exception {
+		int userId = 0;
 		Connection con = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -65,7 +63,9 @@ public class UserModel {
 			st.setString(1, user.getLogin());
 			st.setString(2, user.getPassword());
 			rs = st.executeQuery();
-			existUser = rs.next();
+			while(rs.next()){
+				userId = rs.getInt("id");
+			}
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
@@ -77,10 +77,6 @@ public class UserModel {
 			} catch (Exception e){}
 		}
 
-		if(existUser){
-			return true;
-		} else {
-			return false;
-		}
+		return userId;
 	}
 }

@@ -3,11 +3,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 import br.com.jnoteboard.entity.Note;
-import br.com.jnoteboard.entity.User;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -37,7 +34,7 @@ public class NoteModel {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/jnoteboard","root","");
 			String selectSQL = "INSERT INTO `note` (user_id, note_text) VALUES (?,?)";
 			st = (PreparedStatement) con.prepareStatement(selectSQL);
-			st.setInt(1, 5);
+			st.setInt(1, note.getUserId());
 			st.setString(2, note.getText());
 			st.executeUpdate();
 		} catch (SQLException e){

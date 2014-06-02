@@ -1,8 +1,11 @@
 package br.com.jnoteboard.controller;
 
 import java.util.ArrayList;
+
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import br.com.jnoteboard.entity.Note;
 import br.com.jnoteboard.model.NoteModel;
 
@@ -12,9 +15,13 @@ public class NoteController {
 	public ArrayList<Note> getNotes(){
 		ArrayList<Note> notes = new ArrayList<Note>();
 		NoteModel noteModel = NoteModel.instance();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		HttpSession httpSession = (HttpSession) externalContext.getSession(true);
+		UserController userController = (UserController) httpSession.getAttribute("userController");
+		int userId = userController.getId();
 
 		try {
-			notes = noteModel.list(5);
+			notes = noteModel.list(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,6 +44,10 @@ public class NoteController {
 
 	public void addAction(){
 		NoteModel noteModel = NoteModel.instance();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		String value = externalContext.getRequestParameterMap().get("id");
+		int userId = Integer.parseInt(value);
+		this.note.setUserId(userId);
 
 		try {
 			noteModel.insert(this.note);
