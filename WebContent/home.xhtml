@@ -23,9 +23,10 @@
 	<div id="wrapper">
 		<ui:repeat var="note" value="#{noteController.notes}" varStatus="status">
 			<div class='note'>
-				<div class='header'>
-					<div class='bt-close icon'></div>
-				</div>
+				<h:form styleClass="header">
+					<input type="hidden" name="id" value="#{note.id}" />
+					<h:commandButton actionListener="#{noteController.deleteAction}" styleClass="bt-close icon" />
+				</h:form>
 				<span>#{note.text}</span>
 			</div>
 		</ui:repeat>

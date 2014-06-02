@@ -1,6 +1,8 @@
 package br.com.jnoteboard.controller;
 
 import java.util.ArrayList;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import br.com.jnoteboard.entity.Note;
 import br.com.jnoteboard.model.NoteModel;
 
@@ -39,6 +41,17 @@ public class NoteController {
 		try {
 			noteModel.insert(this.note);
 			this.note = new Note();
+		} catch (Exception e) {}
+	}
+
+	public void deleteAction(){
+		NoteModel noteModel = NoteModel.instance();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		String value = externalContext.getRequestParameterMap().get("id");
+		int id = Integer.parseInt(value);
+
+		try {
+			noteModel.delete(id);
 		} catch (Exception e) {}
 	}
 }

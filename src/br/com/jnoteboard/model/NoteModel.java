@@ -52,6 +52,28 @@ public class NoteModel {
 		}
 	}
 
+	public void delete(int id) throws Exception {
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/jnoteboard","root","");
+			String querySQL = "DELETE FROM `note` WHERE id = ?";
+			st = (PreparedStatement) con.prepareStatement(querySQL);
+			st.setInt(1, id);
+			st.execute();
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+			} catch (Exception e){}
+			try {
+				con.close();
+			} catch (Exception e){}
+		}
+	}
+
 	public ArrayList<Note> list(int userId) throws Exception {
 		ArrayList<Note> notes = new ArrayList<Note>();
 		Connection con = null;
